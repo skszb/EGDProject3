@@ -32,7 +32,8 @@ public class GameManager : MonoBehaviour
     {
         audioSource.PlayOneShot(audioClip);
 
-        Instantiate(meritText, meritTextParent);
+        Transform mt = Instantiate(meritText, meritTextParent);
+        mt.gameObject.SetActive(true);
 
         hitAmountText.text = $"Total Merits: {++hitAmount}";
     }
