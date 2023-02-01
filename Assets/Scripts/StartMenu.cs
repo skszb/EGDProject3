@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class StartMenu : MonoBehaviour
 {
+    [SerializeField] private GameObject creditPage;
     public void PlayGame()
     {
         StartCoroutine(ChangeScene());
@@ -13,6 +14,10 @@ public class StartMenu : MonoBehaviour
     IEnumerator ChangeScene(){
         yield return new WaitForSeconds(0.2f);
         SceneManager.LoadScene("Game");
+    }
+
+    public void CreditPage(bool open){
+        creditPage.SetActive(open);
     }
 
 }
