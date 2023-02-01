@@ -73,3 +73,4 @@ crashlytics-build.properties
 
 # Art Assets Project Files
 *.piskel
+*.piskel.meta
