@@ -43,6 +43,12 @@ public class GameManager : MonoBehaviour
     [Range(0.0f, 100.0f)]
     public float chanceBell = 5.0f;
 
+    [Header("Prayer")]
+    public AudioClip prayerClip;
+
+    [Header("Offer")]
+    public AudioClip offerClip;
+
     [Space]
 
 
@@ -59,6 +65,8 @@ public class GameManager : MonoBehaviour
     private int randomTextLength;
     [SerializeField] public GameObject randomText;
     private Coroutine _randomTextCoroutine = null;
+
+    [SerializeField] private GameObject woodenFish;
     
     // Start is called before the first frame update
     void Start()
@@ -164,8 +172,39 @@ public class GameManager : MonoBehaviour
         
         randomText.SetActive(true);
         randomText.GetComponentInChildren<TMP_Text>().text = randomTexts[randomTextIndex];
+        randomText.GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(randomTextsTime[randomTextIndex]);
         randomText.SetActive(false);
         _randomTextCoroutine = null;
     }
+
+    IEnumerator Prayer(){
+        enablClick = false;
+        audioSource.clip = prayerClip;
+        audioSource.Play();
+        for(int i = 0; i < 460*2; i++){
+            float newScale = 1.0f + (i * 0.01f);
+            woodenFish.transform.localScale = new Vector3(newScale, newScale, newScale);
+            yield return new WaitForSeconds(0.005f);
+        }
+        yield return new WaitForSeconds(0.5f);
+        woodenFish.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+
+        randomText.SetActive(true);
+        randomText.GetComponentInChildren<TMP_Text>().text = "You have been blessed!";
+        yield return new WaitForSeconds(1.0f);
+        randomText.SetActive(false);
+
+        enablClick = true;
+        _randomTextCoroutine = null;
+    }
+
+    public void ToPray(){
+        if(hitAmount >= 50){
+            hitAmount -= 50;
+            hitAmountText.text = $"Total Merits: {++hitAmount}";
+            StartCoroutine(Prayer());
+        }
+    }
+
 }
