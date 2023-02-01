@@ -37,13 +37,17 @@ public class GameManager : MonoBehaviour
     [Range(0.0f, 100.0f)]
     public float chanceClap = 10.0f;
 
-
+   
     [Header("Bell")]
     public AudioClip bellClip;
     [Range(0.0f, 100.0f)]
     public float chanceBell = 5.0f;
 
+    [Space]
+
+
     [Header("Prayer")]
+    public AudioSource prayerSource;
     public AudioClip prayerClip;
 
     [Header("Offer")]
@@ -180,8 +184,8 @@ public class GameManager : MonoBehaviour
 
     IEnumerator Prayer(){
         enablClick = false;
-        audioSource.clip = prayerClip;
-        audioSource.Play();
+        prayerSource.clip = prayerClip;
+        prayerSource.Play();
         for(int i = 0; i < 460*2; i++){
             float newScale = 1.0f + (i * 0.01f);
             woodenFish.transform.localScale = new Vector3(newScale, newScale, newScale);
