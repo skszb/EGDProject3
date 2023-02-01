@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     [Header("Audios")]
     public int beatCount = 4;
     int currentBeat = 0;
-    bool enabled = true;
+    bool enablClick = true;
     float interval = 0;
     public TextMeshProUGUI bpmText;
 
@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
     public void HitWoodenFish()
     {
 
-        if (enabled)
+        if (enablClick)
         {
 
             if (currentBeat >= beatCount)
@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour
                 {
                     audioSource.clip = bellClip;
                     audioSource.Play();
-                    enabled= false;
+                    enablClick = false;
                     bpmText.SetText("0");
                     return;
                 }
@@ -142,9 +142,9 @@ public class GameManager : MonoBehaviour
             }
 
         }
-        if (!enabled && !audioSource.isPlaying)
+        if (!enablClick && !audioSource.isPlaying)
         {
-            enabled = true;
+            enablClick = true;
             currentBeat = beatCount;
         }
     }
