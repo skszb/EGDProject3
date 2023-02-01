@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
+using System.IO;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -21,7 +23,6 @@ public class GameManager : MonoBehaviour
     public float[] randomTextsTime;
     private int randomTextLength;
     [SerializeField] public GameObject randomText;
-
     private Coroutine _randomTextCoroutine = null;
     
     // Start is called before the first frame update
@@ -54,7 +55,6 @@ public class GameManager : MonoBehaviour
 
         hitAmountText.text = $"Total Merits: {++hitAmount}";
 
-        Debug.Log(_randomTextCoroutine);
         if (_randomTextCoroutine == null)
         {
             _randomTextCoroutine = StartCoroutine(RandomText());

@@ -258,8 +258,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8915104}
   - {fileID: 460020851}
+  - {fileID: 8915104}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -435,7 +435,7 @@ RectTransform:
   - {fileID: 2082108123}
   - {fileID: 231894058}
   m_Father: {fileID: 239601408}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1008,6 +1008,9 @@ MonoBehaviour:
   - "To live a pure unselfish life, one must count nothing as one\u2019s own in the
     midst of abundance."
   - If you find no one to support you on the spiritual path, walk alone.
+  - May all beings have happy minds.
+  - All that we are is the result of what we have thought.
+  - Ambition is like love, impatient both of delays and rivals.
   randomTextsTime:
   - 3
   - 3
