@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     private int randomTextLength;
     [SerializeField] public GameObject randomText;
 
+    private Coroutine _randomTextCoroutine = null;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -52,7 +54,11 @@ public class GameManager : MonoBehaviour
 
         hitAmountText.text = $"Total Merits: {++hitAmount}";
 
-        StartCoroutine(RandomText());
+        Debug.Log(_randomTextCoroutine);
+        if (_randomTextCoroutine == null)
+        {
+            _randomTextCoroutine = StartCoroutine(RandomText());
+        }
     }
 
     private void OnDestroy()
@@ -67,10 +73,11 @@ public class GameManager : MonoBehaviour
         if(randomTextIndex >= randomTextLength){
             yield break;
         }
-
+        
         randomText.SetActive(true);
         randomText.GetComponentInChildren<TMP_Text>().text = randomTexts[randomTextIndex];
         yield return new WaitForSeconds(randomTextsTime[randomTextIndex]);
         randomText.SetActive(false);
+        _randomTextCoroutine = null;
     }
 }
